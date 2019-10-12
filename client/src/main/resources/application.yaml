@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: feign-demo-client
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: true
+server:
+  port: 8082
+eureka:
+  client:
+    service-url:
+      defaultZone: http://192.168.100.101:8761/eureka/
+    registry-fetch-interval-seconds: 30
+    instance-info-replication-interval-seconds: 30
+    initial-instance-info-replication-interval-seconds: 30
+
+feign:
+  httpclient:
+    enabled: true
+    max-connections: 200
+    max-connections-per-route: 50
+  client:
+    config:
+      default:
+        connectTimeout: 6000
+        readTimeout: 3000
+  hystrix:
+    enabled: true
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          strategy: SEMAPHORE
+        timeout:
+          enabled: false
+
+ribbon:
+  ConnectTimeout: 2000
+  MaxAutoRetries: 0
+  MaxAutoRetriesNextServer: 2
+  OkToRetryOnAllOperations: false
+  ReadTimeout: 2000
+
