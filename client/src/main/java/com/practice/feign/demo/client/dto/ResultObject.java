@@ -16,6 +16,11 @@ public class ResultObject<T> implements Serializable {
     public ResultObject() {
     }
 
+    public ResultObject(String code, String msg) {
+        this.code = code;
+        this.msg = msg;
+    }
+
     public ResultObject(T data) {
         this.data=data;
     }
