@@ -19,8 +19,10 @@ eureka:
     lease-renewal-interval-in-seconds: 2
     lease-expiration-duration-in-seconds: 3
 feign:
-  httpclient:
+  okhttp:
     enabled: true
+  httpclient:
+#    enabled: true
     max-connections: 200
     max-connections-per-route: 50
   client:
